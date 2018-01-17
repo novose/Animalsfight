@@ -12,6 +12,7 @@ public class Main {
             System.out.println("Menu : \n 1) Créer votre animal \n 2) Voir les stats de l'animal \n 3) Quitter\n \n -> ");
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
+            
             if (input.equals("1")) {
                 Animal.create();
                 Animal.create_ennemy();
