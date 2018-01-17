@@ -82,17 +82,16 @@ public class Animal {
         Animal animal = animals.get(0);
         Animal ennemy = animals.get(1);
         int turn = 0;
-        while (animal.getHp() > 0 && ennemy.getHp() > 0) {
-            int dmg = animal.attack();
-
-            Scanner sc = new Scanner(System.in);
-            String input = sc.nextLine();
-            if (input.equals("1")) {
-
-                turn = 1;
-            }
-
-        }
+//        while (animal.getHp() > 0 && ennemy.getHp() > 0) {
+//
+//            Scanner sc = new Scanner(System.in);
+//            String input = sc.nextLine();
+//            if (input.equals("1")) {
+//
+//                turn = 1;
+//            }
+//
+//        }
     }
 
     public static void show_stats() {
