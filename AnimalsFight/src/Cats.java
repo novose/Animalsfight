@@ -10,8 +10,7 @@ public class Cats extends Animal {
         Random rand = new Random();
 
         int dmg = this.getAttack();
-        int chance = rand.nextInt(3);
-        System.out.println(chance);
+        int chance = rand.nextInt(3) + 1;
         if (chance < 1) {
             int attackSpe = rand.nextInt(20);
             dmg = attackSpe + 30;
@@ -22,6 +21,4 @@ public class Cats extends Animal {
         }
         return dmg;
     }
-
-
 }
