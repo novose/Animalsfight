@@ -12,11 +12,14 @@ public class Animal {
     private String type;
     private int ennemy;
     private static ArrayList<Animal> instances = new ArrayList<>();
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
 
 
     public Animal() {
         Random rand = new Random();
-        this.hp = rand.nextInt(800) + 400;
+        this.hp = rand.nextInt(401) + 400;
         this.setAttack(rand.nextInt(30));
         this.name = "Unnamed";
         instances.add(this);
@@ -25,7 +28,7 @@ public class Animal {
 
     public Animal(String name, int ennemy) {
         Random rand = new Random();
-        this.hp = rand.nextInt(800) + 400;
+        this.hp = rand.nextInt(401) + 400;
         this.setAttack(rand.nextInt(30));
         this.name = name;
         this.ennemy = ennemy;
@@ -37,11 +40,11 @@ public class Animal {
     public static void create() {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
-        System.out.println("Choisissez un nom pour votre animal :");
+        System.out.print("Choisissez un nom pour votre animal : ");
         String name = sc.nextLine();
 
         while (choice == 0) {
-            System.out.println("\n Choississez le type d'animal : \n 1/ Chat\n 2/ Chien\n 3/ Furet\n ");
+            System.out.print("\n Choississez le type d'animal : \n 1/ Chat\n 2/ Chien\n 3/ Furet\n-> ");
             String input = sc.nextLine();
             if (input.equals("1")) {
                 new Cats(name, 0);
@@ -62,7 +65,6 @@ public class Animal {
     }
 
     public static void create_ennemy() {
-        System.out.println("\n Un ennemi est apparu ! Préparez vous au combat !\n\n ");
         Random rand = new Random();
         int choice = rand.nextInt(3) + 1;
 //        if (choice == 1) {
@@ -78,20 +80,33 @@ public class Animal {
 
     public static void battle() {
         ArrayList<Animal> animals = Animal.getInstances();
-        System.out.println(" !");
         Animal animal = animals.get(0);
         Animal ennemy = animals.get(1);
+        System.out.println("\n Un " + ennemy.name + " ! Préparez vous au combat !\n\n ");
+
         int turn = 0;
-//        while (animal.getHp() > 0 && ennemy.getHp() > 0) {
-//
-//            Scanner sc = new Scanner(System.in);
-//            String input = sc.nextLine();
-//            if (input.equals("1")) {
-//
-//                turn = 1;
-//            }
-//
-//        }
+        while (animal.getHp() > 0 && ennemy.getHp() > 0) {
+            System.out.flush();
+            System.out.println("Que souhaitez vous faire ?");
+            System.out.print("1) Attaquer\n2) Voir les stats de l'ennemi\n3) Fuir\n-> ");
+            Scanner sc = new Scanner(System.in);
+            String input = sc.nextLine();
+            if (input.equals("1")) {
+                int damage = animal.attack();
+                ennemy.hp -= damage;
+                System.out.println(ANSI_RED + ennemy.name + " perd " + damage + "hp ! \n\n" + ANSI_RESET);
+                int ennemy_damage = ennemy.attack();
+                animal.hp -= ennemy_damage;
+                System.out.println(ANSI_GREEN + animal.name + " perd " + damage + "hp !\n\n" + ANSI_RESET);
+            }
+            else if (input.equals("2")) {
+                System.out.println(animal.name + "\nHp : " + animal.getHp() + "\nAttack : " + animal.getAttack() + "\n\n");
+            }
+            else if (input.equals("3")) {
+                System.exit(0);
+            }
+
+        }
     }
 
     public static void show_stats() {
@@ -105,6 +120,8 @@ public class Animal {
     public static ArrayList<Animal> getInstances() {
         return instances;
     }
+
+    public int attack(){ return 0;}
 
     public String getType() {
         return type;

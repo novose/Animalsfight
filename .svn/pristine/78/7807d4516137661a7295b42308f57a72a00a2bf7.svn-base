@@ -1,0 +1,60 @@
+public class Animal {
+
+    protected String name;
+    protected int hp;
+    protected int attack;
+    protected int specialattack;
+    protected int maxrandom;
+    protected String type;
+
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public int getSpecialattack() {
+        return specialattack;
+    }
+
+    public void setSpecialattack(int specialattack) {
+        this.specialattack = specialattack;
+    }
+
+    public int getMaxrandom() {
+        return maxrandom;
+    }
+
+    public void setMaxrandom(int maxrandom) {
+        this.maxrandom = maxrandom;
+    }
+
+}

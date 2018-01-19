@@ -11,7 +11,7 @@ public class Main {
         byte choice = 0;
 
         while (choice == 0) {
-            System.out.println("Menu : \n 1) Créer votre animal \n 2) Voir les stats de l'animal \n 3) Quitter\n \n -> ");
+            System.out.print("Menu : \n 1) Créer votre animal \n 2) Voir les stats de l'animal \n 3) Quitter\n\n-> ");
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
             

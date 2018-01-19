@@ -1,0 +1,8 @@
+public class Chat extends Animal {
+
+    public chat(String name) {
+        super(name);
+        setHp(100);
+        setAttack(200);
+    }
+}
